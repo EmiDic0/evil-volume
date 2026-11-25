@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>my evil input</title>
+<style>
+  /* Everything you make goes inside #stage: exactly 800 × 400 pixels. The gallery shows
+     this box (shrunk to fit), so anything outside it won't be seen. */
+  html, body { margin: 0; background: #292b47; color: #eceae3; font: 16px/1.5 ui-monospace, Menlo, Consolas, monospace; }
+  #stage {
+    width: 800px; height: 400px; overflow: hidden; position: relative;
+    display: grid; place-items: center; text-align: center;
+    background: #23243d;
+  }
+
+  /* ---- the example below: delete it and build your own ---- */
+  .vol { font-size: 64px; margin: 0; }
+  button { font: inherit; color: inherit; background: #3f4168; border: 0; border-radius: 6px; padding: .6rem 1.2rem; cursor: pointer; }
+  .hint { color: #8d8aa6; font-size: 14px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- example evil input: volume you have to pump up by hand, and it leaks back down -->
+  <div>
+    <img src="" id="display">
+    <button id="fetch">Fetch card</button>
+    <p class="name" id="name"></p>
+    <p class="hint" id="description"></p>
+  </div>
+</div>
+<script>
+  // the example: delete this too
+  let imagelink = "";
+  let cardname = "";
+  let carddescription = "";
+  const out = document.getElementById('display');
+  const name = document.getElementById('name');
+  document.getElementById('fetch').addEventListener('click', () => {
+    fetch(' https://api.scryfall.com/cards/random')
+  .then(response => {
+    if (response.ok) {
+      return response.json(); // Parse the response data as JSON
+    } else {
+      throw new Error('API request failed');
+    }
+  })
+  .then(data => {
+    // Process the response data here
+    console.log(data); // Example: Logging the data to the console
+    imagelink = data.image_uris.large;
+    console.log(imagelink);
+    cardname = data.name;
+    carddescription = data.oracle_text;
+    out.src = imagelink;
+    name.textContent = cardname;
+    description.textContent = carddescription;
+  })
+  .catch(error => {
+    // Handle any errors here
+    console.error(error); // Example: Logging the error to the console
+  });
+  });
+</script>
+</body>
+</html>
