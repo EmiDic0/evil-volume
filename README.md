@@ -4,11 +4,11 @@
 
 ## what it is
 
-<one or two sentences: what is your evil input?>
+It's a button that fetches a random magic the gathering card from an online API.
 
 ## what input it collects
 
-<text? a volume? a phone number? brightness? a time? and how does it make that miserable?>
+A simple button press
 
 ## screenshot
 
@@ -17,7 +17,7 @@
 
 ## live
 
-https://<your-github-name>.github.io/<this-repo>/
+https://emidic0.github.io/evil-volume
 
 ## how to run it
 
