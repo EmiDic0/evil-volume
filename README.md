@@ -1,4 +1,4 @@
-# <your project's name>
+# Evil Random MTG
 
 <!-- This README is the front door of your project: the gallery shows its first lines. -->
 
